@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
@@ -7,7 +8,8 @@ public class CharacterController : MonoBehaviour
    [SerializeField] private Rigidbody _rigidbody;
    [SerializeField] private FixedJoystick _joystick;
 
-   [SerializeField] private float _moveSpeed;
+   private float _rightAndLeftMoveSpeed = 10;
+   private float _forwardMoveSpeed = 4f;
 
    private void Start()
    {
@@ -16,9 +18,7 @@ public class CharacterController : MonoBehaviour
 
    private void FixedUpdate()
    {
-      _rigidbody.AddForce(Vector3.right * 100f);
-      _rigidbody.velocity = new Vector3(0,0,_joystick.Horizontal * -_moveSpeed);
+      _rigidbody.velocity = new Vector3(_forwardMoveSpeed, 0, _joystick.Horizontal * -_rightAndLeftMoveSpeed);
    }
 
-  
 }

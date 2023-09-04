@@ -7,6 +7,9 @@ TagManager:
   - Shoes
   - Diamond
   - Obstacle
+  - Rope
+  - Rails
+  - PointSpawn
   layers:
   - Default
   - TransparentFX
