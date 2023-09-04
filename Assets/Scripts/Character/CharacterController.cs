@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
@@ -9,7 +8,7 @@ public class CharacterController : MonoBehaviour
    [SerializeField] private FixedJoystick _joystick;
 
    private float _rightAndLeftMoveSpeed = 10;
-   private float _forwardMoveSpeed = 4f;
+   private float _forwardMoveSpeed = 2f;
 
    private void Start()
    {

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -15,7 +12,7 @@ public class CameraController : MonoBehaviour
     private void LateUpdate()
     {
         Vector3 temp = transform.position;
-        temp.x = _player.position.x -7.5f;
+        temp.x = _player.position.x -8f;
         temp.y = _player.position.y +5;
 
         transform.position = temp;
