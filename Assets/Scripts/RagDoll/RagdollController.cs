@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class RagdollController : MonoBehaviour
@@ -15,12 +16,12 @@ public class RagdollController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            Makephysical();
-        }
+            //Makephysical();
+        }  
     }
 
     public void Makephysical()
