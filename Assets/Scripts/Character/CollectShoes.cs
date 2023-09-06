@@ -12,7 +12,7 @@ public class CollectShoes : MonoBehaviour
     
     private List<GameObject> _leftShoesList = new List<GameObject>(); 
     private List<GameObject> _rightShoesList = new List<GameObject>(); 
-    private List<GameObject> _colliderShoesList = new List<GameObject>();
+    public List<GameObject> _colliderShoesList = new List<GameObject>();
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,18 +23,18 @@ public class CollectShoes : MonoBehaviour
         if (other.gameObject.CompareTag("Shoes"))
         { 
             Destroy(other.gameObject); 
-            GameObject leftShoesList =InstantiateShoes(spawnShoesLL, _shoes, _pointSpawnLeftLeg);
-            _leftShoesList.Add(leftShoesList);
-            GameObject rightShoesList = InstantiateShoes(spawnShoesRL,_shoes, _pointSpawnRightLeg);
-            _rightShoesList.Add(rightShoesList);
+            //GameObject leftShoesList =InstantiateShoes(spawnShoesLL, _shoes, _pointSpawnLeftLeg);
+            //_leftShoesList.Add(leftShoesList);
+            //GameObject rightShoesList = InstantiateShoes(spawnShoesRL,_shoes, _pointSpawnRightLeg);
+            //_rightShoesList.Add(rightShoesList);
             GameObject collider = InstantiateShoes(spawnCollider, _colliderShoes, _pointSpawnCollider);
             _colliderShoesList.Add(collider);
 
             gameObject.transform.position += new Vector3(0, 0.5f, 0);
 
             PositionCollider(collider,_colliderShoesList);
-            PositionShoes(leftShoesList,_leftShoesList);
-            PositionShoes(rightShoesList,_rightShoesList);
+            //PositionShoes(leftShoesList,_leftShoesList);
+            //PositionShoes(rightShoesList,_rightShoesList);
         }
     }
     
@@ -44,22 +44,26 @@ public class CollectShoes : MonoBehaviour
         {
             NewMethod();
 
-            gameObject.transform.position -= new Vector3(0,0.5f,0);
+            gameObject.transform.position -= new Vector3(0,0.50f,0);
         }
     }
 
     public void NewMethod()
     {
-        GameObject leftShoes = _leftShoesList[_leftShoesList.Count - 1];
-        Destroy(leftShoes);
-        GameObject rightShoes = _rightShoesList[_rightShoesList.Count - 1];
-        Destroy(rightShoes);
+        //GameObject leftShoes = _leftShoesList[_leftShoesList.Count - 1];
+      //  Destroy(leftShoes);
+        //GameObject rightShoes = _rightShoesList[_rightShoesList.Count - 1];
+        //Destroy(rightShoes);
+
         GameObject collider = _colliderShoesList[_colliderShoesList.Count - 1];
         Destroy(collider);
-
-        _leftShoesList.RemoveAt(_leftShoesList.Count - 1);
-        _rightShoesList.RemoveAt(_rightShoesList.Count - 1);
-        _colliderShoesList.RemoveAt(_colliderShoesList.Count - 1);
+        //_leftShoesList.RemoveAt(_leftShoesList.Count - 1);
+        //_rightShoesList.RemoveAt(_rightShoesList.Count - 1);
+        if (_colliderShoesList.Count != 0 )
+        {
+            _colliderShoesList.RemoveAt(_colliderShoesList.Count - 1);
+        }
+       
     }
 
     private GameObject InstantiateShoes(Vector3 spawnPointPosition,GameObject prefab, GameObject spawnPoint)

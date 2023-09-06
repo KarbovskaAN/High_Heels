@@ -11,6 +11,7 @@ TagManager:
   - Rails
   - PointSpawn
   - Step
+  - CountingPoint
   layers:
   - Default
   - TransparentFX

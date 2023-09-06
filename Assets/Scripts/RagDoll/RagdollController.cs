@@ -1,10 +1,13 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RagdollController : MonoBehaviour
 {
     public Animator Animator;
     public Rigidbody[] AllRigidbodys;
+
+    private List<GameObject> _listCollader;
 
     private void Awake()
     {
@@ -16,11 +19,16 @@ public class RagdollController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        _listCollader = gameObject.GetComponent<CollectShoes>()._colliderShoesList;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Obstacle"))
+        if (other.gameObject.CompareTag("Obstacle") && _listCollader.Count == 0)
         {
-            //Makephysical();
+            Makephysical();
         }  
     }
 
