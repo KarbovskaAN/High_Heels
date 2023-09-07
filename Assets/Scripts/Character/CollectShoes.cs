@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CollectShoes : MonoBehaviour
@@ -66,7 +64,6 @@ public class CollectShoes : MonoBehaviour
         {
             _colliderShoesList.RemoveAt(_colliderShoesList.Count - 1);
         }
-
     }
 
     private GameObject InstantiateShoes(Vector3 spawnPointPosition,GameObject prefab, GameObject spawnPoint)

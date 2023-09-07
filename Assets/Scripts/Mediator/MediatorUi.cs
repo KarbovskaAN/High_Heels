@@ -19,7 +19,7 @@ public class MediatorUi : MonoBehaviour
     {
         CountingDiamond();
     }
-    public void PanelStart()
+    public void PanelOff()
     {
         _panelStart.SetActive(false) ;
     }

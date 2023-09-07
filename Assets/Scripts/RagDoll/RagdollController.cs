@@ -8,10 +8,10 @@ public class RagdollController : MonoBehaviour
     [SerializeField] private Rigidbody[] AllRigidbodys;
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private MediatorUi _mediator;
+    [SerializeField] private CharacterController _characterController;
+    [SerializeField] private BoxCollider _characterColider;
     
-
-    private List<GameObject> _listCollader;
-
+    
     private void Awake()
     {
         for (int i = 0; i < AllRigidbodys.Length; i++)
@@ -22,15 +22,9 @@ public class RagdollController : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        _listCollader = gameObject.GetComponent<CollectShoes>()._colliderShoesList;
-        _rigidbody = GetComponent<Rigidbody>();
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Obstacle") && _listCollader.Count == 0)
+        if (other.gameObject.CompareTag("Obstacle") )
         {
             Makephysical();
             _mediator.PanelLost();
@@ -43,9 +37,13 @@ public class RagdollController : MonoBehaviour
         for (int i =0; i < AllRigidbodys.Length;i++)
         {
             gameObject.GetComponent<BoxCollider>().enabled = false;
+            _characterColider.enabled = false;
             AllRigidbodys[i].isKinematic = false;
             AllRigidbodys[i].GetComponent<Collider>().enabled = true;
+            _characterController._isActive = false;
             _rigidbody.velocity = new Vector3(0, 0, 0);
+            _rigidbody.isKinematic = true;
+            
         }
     }
 }

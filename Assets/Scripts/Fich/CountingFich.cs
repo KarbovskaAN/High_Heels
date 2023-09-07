@@ -10,7 +10,7 @@ public class CountingFich : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Untagged") )
         {
             countFich = _countDiamond._countDiamond * NumbStep;
             PlayerPrefs.SetInt("CountFich",countFich);
