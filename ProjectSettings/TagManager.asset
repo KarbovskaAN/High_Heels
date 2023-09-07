@@ -12,6 +12,8 @@ TagManager:
   - PointSpawn
   - Step
   - CountingPoint
+  - FinishObstacle
+  - StartObstacle
   layers:
   - Default
   - TransparentFX

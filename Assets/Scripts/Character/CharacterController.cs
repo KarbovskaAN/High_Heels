@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
@@ -12,7 +9,6 @@ public class CharacterController : MonoBehaviour
    [SerializeField] private Animator _animator;
    [SerializeField] private MediatorUi _mediator;
    [SerializeField] private CollectShoes _collectShoes;
-   [SerializeField] private List<GameObject> _step;
    [SerializeField] private RagdollController _ragdollController;
 
    private float _rightAndLeftMoveSpeed = 15;
@@ -114,8 +110,6 @@ public class CharacterController : MonoBehaviour
             _mediator.PanelFinish(); 
          }
       }
-     
-        
    }
    
 }

@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CollectShoes : MonoBehaviour
@@ -14,6 +16,8 @@ public class CollectShoes : MonoBehaviour
     private List<GameObject> _rightShoesList = new List<GameObject>(); 
     public List<GameObject> _colliderShoesList = new List<GameObject>();
 
+    private int _countContactPoint;
+    
     private void OnTriggerEnter(Collider other)
     {
         Vector3 spawnShoesLL = _pointSpawnLeftLeg.transform.position;
@@ -40,10 +44,9 @@ public class CollectShoes : MonoBehaviour
     
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Obstacle"))
+        if (other.gameObject.CompareTag("Obstacle") )
         {
-            NewMethod();
-
+            NewMethod(); 
             gameObject.transform.position -= new Vector3(0,0.50f,0);
         }
     }
@@ -63,7 +66,7 @@ public class CollectShoes : MonoBehaviour
         {
             _colliderShoesList.RemoveAt(_colliderShoesList.Count - 1);
         }
-       
+
     }
 
     private GameObject InstantiateShoes(Vector3 spawnPointPosition,GameObject prefab, GameObject spawnPoint)
@@ -95,5 +98,4 @@ public class CollectShoes : MonoBehaviour
             gameObject.transform.localPosition = new Vector3(0, gameObjectsList[gameObjectsList.Count - 2].transform.localPosition.y - 0.5f, 0);
         }
     }
-
 }

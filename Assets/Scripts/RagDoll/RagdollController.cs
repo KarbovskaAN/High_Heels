@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class RagdollController : MonoBehaviour
 {
-    public Animator Animator;
-    public Rigidbody[] AllRigidbodys;
+    [SerializeField ]private Animator Animator;
+    [SerializeField] private Rigidbody[] AllRigidbodys;
+    [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private MediatorUi _mediator;
+    
 
     private List<GameObject> _listCollader;
 
@@ -22,6 +25,7 @@ public class RagdollController : MonoBehaviour
     private void Start()
     {
         _listCollader = gameObject.GetComponent<CollectShoes>()._colliderShoesList;
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,6 +33,7 @@ public class RagdollController : MonoBehaviour
         if (other.gameObject.CompareTag("Obstacle") && _listCollader.Count == 0)
         {
             Makephysical();
+            _mediator.PanelLost();
         }  
     }
 
@@ -40,6 +45,7 @@ public class RagdollController : MonoBehaviour
             gameObject.GetComponent<BoxCollider>().enabled = false;
             AllRigidbodys[i].isKinematic = false;
             AllRigidbodys[i].GetComponent<Collider>().enabled = true;
+            _rigidbody.velocity = new Vector3(0, 0, 0);
         }
     }
 }

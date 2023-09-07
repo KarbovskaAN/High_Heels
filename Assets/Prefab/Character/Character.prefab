@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 2017947330369732432}
   m_Layer: 0
   m_Name: SpawnPointCollider
-  m_TagString: Untagged
+  m_TagString: Legs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -634,7 +634,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 879402608007953505}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3039,6 +3039,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 0}
   _joystick: {fileID: 0}
+  _animator: {fileID: 0}
+  _mediator: {fileID: 0}
+  _collectShoes: {fileID: 0}
+  _ragdollController: {fileID: 0}
 --- !u!114 &6855220668130877212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3069,6 +3073,7 @@ MonoBehaviour:
   _pointSpawnCollider: {fileID: 0}
   _shoes: {fileID: 0}
   _colliderShoes: {fileID: 0}
+  _colliderShoesList: []
 --- !u!95 &2867052709225725827
 Animator:
   serializedVersion: 4
@@ -3101,7 +3106,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.29, y: 1.37, z: 0.39}
-  m_Center: {x: 0, y: 0.68, z: 0}
+  m_Center: {x: 0, y: 0.72, z: 0}
 --- !u!114 &2857139314900595658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3127,6 +3132,8 @@ MonoBehaviour:
   - {fileID: 1026060481636628532}
   - {fileID: 1395005988794668020}
   - {fileID: 2645698485343965133}
+  _rigidbody: {fileID: 0}
+  _mediator: {fileID: 0}
 --- !u!1 &8701899765063334408
 GameObject:
   m_ObjectHideFlags: 0
