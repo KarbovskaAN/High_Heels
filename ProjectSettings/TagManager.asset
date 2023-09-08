@@ -16,14 +16,16 @@ TagManager:
   - StartObstacle
   - Legs
   - Steps
+  - RopeFinish
+  - Bottom
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Shoes
   - Water
   - UI
-  - 
+  - Rails
   - 
   - 
   - 

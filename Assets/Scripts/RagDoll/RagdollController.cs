@@ -28,7 +28,13 @@ public class RagdollController : MonoBehaviour
         {
             Makephysical();
             _mediator.PanelLost();
-        }  
+        } 
+        if (other.gameObject.CompareTag("Bottom"))
+        { 
+            Makephysical();
+            _mediator.PanelLost();
+        }
+        
     }
 
     public void Makephysical()
@@ -46,4 +52,5 @@ public class RagdollController : MonoBehaviour
             
         }
     }
+    
 }

@@ -29,21 +29,29 @@ public class MediatorUi : MonoBehaviour
         _board[0].SetActive(false);
         _finishCountDiamond.text = PlayerPrefs.GetInt("CountFich").ToString();
     }
-
     public void PanelLost()
     {
         _panelLost.SetActive(true);
         _board[0].SetActive(false);
         _board[1].SetActive(false);
-        
-    }
+    } 
     public void ResetScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     } 
-    public void LastScene()
+    public void NextScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        byte currentScene;
+        currentScene = (byte) SceneManager.GetActiveScene().buildIndex;
+        
+        if (currentScene == 2)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        }
     }
     private void CountingDiamond()
     {
