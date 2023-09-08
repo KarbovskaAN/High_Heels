@@ -35,6 +35,7 @@ public class CollectShoes : MonoBehaviour
 
             _parent.position += new Vector3(0, 0.5f, 0);
             _shoesCollectCollider.position -= new Vector3(0, 0.5f, 0);
+            _shoesCollectCollider.localScale += new Vector3(0, 0.5f, 0);
 
             PositionCollider(collider,_colliderShoesList);
             PositionShoes(leftShoesList,_leftShoesList);
@@ -46,28 +47,39 @@ public class CollectShoes : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle") )
         {
-            NewMethod(); 
-            _parent.position -= new Vector3(0,0.50f,0);
-            _shoesCollectCollider.position += new Vector3(0, 0.5f, 0);
+            if (_colliderShoesList.Count != 0)
+            {
+                _parent.position -= new Vector3(0, 0.50f, 0);
+            }
+            
+            DeleteShoes();
         }
     }
+    
+    
 
-    public void NewMethod()
+    public void DeleteShoes()
     {
-        GameObject leftShoes = _leftShoesList[_leftShoesList.Count - 1];
-        Destroy(leftShoes);
-        GameObject rightShoes = _rightShoesList[_rightShoesList.Count - 1];
-        Destroy(rightShoes);
 
-        GameObject collider = _colliderShoesList[_colliderShoesList.Count - 1];
-        Destroy(collider);
-        
-        _leftShoesList.RemoveAt(_leftShoesList.Count - 1);
-        _rightShoesList.RemoveAt(_rightShoesList.Count - 1);
-        
-        if (_colliderShoesList.Count != 0 )
+        if (_colliderShoesList.Count != 0)
         {
+            GameObject leftShoes = _leftShoesList[_leftShoesList.Count - 1];
+            Destroy(leftShoes);
+            GameObject rightShoes = _rightShoesList[_rightShoesList.Count - 1];
+            Destroy(rightShoes);
+
+            GameObject collider = _colliderShoesList[_colliderShoesList.Count - 1];
+            Destroy(collider);
+
+            _leftShoesList.RemoveAt(_leftShoesList.Count - 1);
+            _rightShoesList.RemoveAt(_rightShoesList.Count - 1);
+
+
             _colliderShoesList.RemoveAt(_colliderShoesList.Count - 1);
+
+
+            _shoesCollectCollider.position += new Vector3(0, 0.5f, 0);
+            _shoesCollectCollider.localScale -= new Vector3(0, 0.5f, 0);
         }
     }
 

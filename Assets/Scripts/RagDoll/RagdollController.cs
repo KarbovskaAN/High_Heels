@@ -39,18 +39,22 @@ public class RagdollController : MonoBehaviour
 
     public void Makephysical()
     {
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        Destroy(_characterColider.gameObject);
         Animator.enabled = false;
+        _characterController._isActive = false;
+        
+        
         for (int i =0; i < AllRigidbodys.Length;i++)
         {
-            gameObject.GetComponent<BoxCollider>().enabled = false;
-            _characterColider.enabled = false;
+            AllRigidbodys[i].velocity = new Vector3(0, 0, 0);
             AllRigidbodys[i].isKinematic = false;
             AllRigidbodys[i].GetComponent<Collider>().enabled = true;
-            _characterController._isActive = false;
-            _rigidbody.velocity = new Vector3(0, 0, 0);
-            _rigidbody.isKinematic = true;
-            
         }
+        
+        
+        _rigidbody.velocity = new Vector3(0, 0, 0);
+        _rigidbody.isKinematic = true;
     }
     
 }

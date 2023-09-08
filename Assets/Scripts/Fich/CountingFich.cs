@@ -15,8 +15,5 @@ public class CountingFich : MonoBehaviour
             countFich = _countDiamond._countDiamond * NumbStep;
             PlayerPrefs.SetInt("CountFich",countFich);
         }
-
-        int result = PlayerPrefs.GetInt("CountFich");
-        Debug.Log(result);
     }
 }

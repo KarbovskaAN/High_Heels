@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MediatorUi : MonoBehaviour
 {
-    [SerializeField] private GameObject _textCountDiamond;
+    [SerializeField] private TMP_Text _textCountDiamond;
     [SerializeField] private GameObject _panelStart;
     [SerializeField] private GameObject _panelLost;
     [SerializeField] private GameObject _panelFinish;
@@ -55,6 +55,6 @@ public class MediatorUi : MonoBehaviour
     }
     private void CountingDiamond()
     {
-        _textCountDiamond.GetComponentInChildren<TMP_Text>().text = _countDiamond._countDiamond.ToString();
+        _textCountDiamond.text = _countDiamond._countDiamond.ToString();
     }
 }

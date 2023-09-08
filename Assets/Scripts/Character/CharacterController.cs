@@ -13,6 +13,12 @@ public class CharacterController : MonoBehaviour
    [SerializeField] private GameObject _leftKnee;
    [SerializeField] private GameObject _rightLeg;
    [SerializeField] private GameObject _rightKnee;
+   
+   [SerializeField] private Transform _leftShoesParent;
+   [SerializeField] private Transform _rightShoesParent;
+   
+   [SerializeField] private Transform _leftShoes;
+   [SerializeField] private Transform _rightLShoes;
 
    private float _rightAndLeftMoveSpeed = 2;
    private float _forwardMoveSpeed = 2f;
@@ -76,14 +82,14 @@ public class CharacterController : MonoBehaviour
          }
          else
          {
-            _collectShoes.NewMethod();
+            _collectShoes.DeleteShoes();
          }
       }
       if (other.gameObject.CompareTag("Steps"))
       {
          if (_collectShoes._colliderShoesList.Count >=1 )
          {
-               _collectShoes.NewMethod();
+            _collectShoes.DeleteShoes();
             
          }
          else if (_collectShoes._colliderShoesList.Count==0 )
@@ -98,12 +104,30 @@ public class CharacterController : MonoBehaviour
       }
       if (other.gameObject.CompareTag("StartObstacle"))
       {
+         _rigidbody.useGravity = true;
          _animator.enabled = false;
          _leftLeg.gameObject.transform.localEulerAngles = new Vector3(0,0,90);
          _leftKnee.gameObject.transform.localEulerAngles = new Vector3(0,0,0);
          _rightLeg.gameObject.transform.localEulerAngles = new Vector3(0,0,-90);
          _rightKnee.gameObject.transform.localEulerAngles = new Vector3(0,0,0);
+         
+         _leftShoes.SetParent(transform);
+         _rightLShoes.SetParent(transform);
+         
       } 
+      
+      if (other.gameObject.CompareTag("FinishObstacle"))
+      {
+         _rigidbody.useGravity = false;
+         _animator.enabled = true;
+         
+         _leftShoes.SetParent(_leftShoesParent);
+         _rightLShoes.SetParent(_rightShoesParent);
+         
+         float up = _collectShoes._colliderShoesList.Count * 0.5f + 0.7f;
+         transform.parent.position += new Vector3(0, up, 0);
+      } 
+      
       if (other.gameObject.CompareTag("Rope"))
       {
          _animator.SetBool(_isWalkingHash, false);
@@ -116,6 +140,5 @@ public class CharacterController : MonoBehaviour
          _animator.SetBool(_isWalkingRopeHash, false);
          _animator.SetBool(_isWalkingHash, true);
       }
-
    }
 }
